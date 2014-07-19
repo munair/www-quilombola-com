@@ -1,6 +1,10 @@
 var express = require('express');
 var fs = require('fs');
 var postmark = require("postmark")("db375280-7dd3-4240-89db-1e19ee9e939e")
+<<<<<<< HEAD
+=======
+
+>>>>>>> staging
 
 var app = express();
 
@@ -36,9 +40,15 @@ app.post('/inc_email.html', function(request, response) {
           + '\n';
 
   postmark.send({
+<<<<<<< HEAD
     "From" : "munair@quilombola.com",
     "To" : "munair@quilombola.com",
     "Subject" : "Contact from www.quilombola.com",
+=======
+    "From" : "munair@quilombolaquilombola.com",
+    "To" : "munair@quilombolaquilombola.com",
+    "Subject" : "Contact from www.quilombolaquilombola.com",
+>>>>>>> staging
     "Tag" : "Inquiry",
     "TextBody" : out
   }, function(error, success) {
