@@ -1,6 +1,6 @@
 var express = require('express');
 var fs = require('fs');
-var postmark = require("postmark")(process.env.POSTMARK_API_KEY);
+var postmark = require("postmark")("db375280-7dd3-4240-89db-1e19ee9e939e")
 
 
 var app = express();
@@ -20,8 +20,10 @@ app.get('/contact', function(request, response) { var htmlBuffer = fs.readFileSy
 app.get('/inc_services.html', function(request, response) { var htmlBuffer = fs.readFileSync('inc_services.html', 'utf-8'); response.send(htmlBuffer); });
 app.get('/inc_proprietor.html', function(request, response) { var htmlBuffer = fs.readFileSync('inc_proprietor.html', 'utf-8'); response.send(htmlBuffer); });
 app.get('/inc_contact.html', function(request, response) { var htmlBuffer = fs.readFileSync('inc_contact.html', 'utf-8'); response.send(htmlBuffer); });
+app.get('/inc_email.html', function(request, response) { var htmlBuffer = fs.readFileSync('inc_email.html', 'utf-8'); response.send(htmlBuffer); });
+app.get('/inc_formconfirmation.html', function(request, response) { var htmlBuffer = fs.readFileSync('inc_formconfirmation.html', 'utf-8'); response.send(htmlBuffer); });
 
-app.post('/contact', function(request, response) {
+app.post('/inc_email.html', function(request, response) {
   var name = request.body.name;
   var email = request.body.email;
   var mobile = request.body.mobile;
@@ -33,21 +35,22 @@ app.post('/contact', function(request, response) {
           + '\nmessage: ' + message
           + '\nvalidation: ' + validation 
           + '\n';
+
   postmark.send({
-    "From": "info@quilombola.com",
-    "To": "munair@quilombola.com",
-    "Subject": "Contact from www.quilombola.com",
-    "TextBody": out,
-    "Tag": "registrant"
+    "From" : "munair@quilombolaquilombola.com",
+    "To" : "munair@quilombolaquilombola.com",
+    "Subject" : "Contact from www.quilombolaquilombola.com",
+    "Tag" : "Inquiry",
+    "TextBody" : out
   }, function(error, success) {
-       if(error) {
+      if(error) {
           console.error("Unable to send via postmark: " + error.message);
          return;
-       }
-    console.info("Sent to postmark for delivery")
+      }
+      console.info("Sent to postmark for delivery")
   });
 
-  response.redirect('back');
+  response.redirect('/inc_formconfirmation.html');
 });
 
 var port = process.env.PORT || 8080;
