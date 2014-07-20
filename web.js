@@ -37,9 +37,9 @@ app.post('/inc_email.html', function(request, response) {
           + '\n';
 
   postmark.send({
-    "From" : "munair@quilombolaquilombola.com",
-    "To" : "munair@quilombolaquilombola.com",
-    "Subject" : "Contact from www.quilombolaquilombola.com",
+    "From" : "munair@quilombola.com",
+    "To" : "munair@quilombola.com",
+    "Subject" : "Contact from www.quilombola.com",
     "Tag" : "Inquiry",
     "TextBody" : out
   }, function(error, success) {
