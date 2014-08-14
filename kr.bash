@@ -1,7 +1,7 @@
 #!/bin/bash
 # script name : kr.bash
 # 
-git clone git@github.com:munair/www-quilombola-kr.git
+git clone https://github.com/munair/www-quilombola-kr.git
 cd www-quilombola-kr
 echo "you have five seconds to Ctrl-Z in your manual changes"
 sleep 5
