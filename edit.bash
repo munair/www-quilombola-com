@@ -71,6 +71,7 @@ git remote remove production-heroku
 heroku apps:destroy www-quilombola-com --confirm www-quilombola-com
 heroku apps:create www-quilombola-com
 heroku domains:add www.quilombola.com --app www-quilombola-com
+heroku domains:add quilombola.com --app www-quilombola-com
 heroku git:remote -a www-quilombola-com -r production-heroku
 git push production-heroku master:master
 git checkout development
